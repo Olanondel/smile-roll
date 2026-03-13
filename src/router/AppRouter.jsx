@@ -6,8 +6,8 @@ import { removeLeadingSlash } from '../utils/utils.js';
 
 import { ProtectedRoute } from '../components/ProtectedRoute.jsx';
 
-import PhonePage from '../pages/Auth/PhonePage';
-import CodePage from '../pages/Auth/CodePage';
+import PhonePage from '../pages/auth/PhonePage';
+import CodePage from '../pages/auth/CodePage';
 import Home from '../pages/Home.jsx';
 import Profile from '../pages/Profile.jsx';
 import { useSelector } from 'react-redux';
