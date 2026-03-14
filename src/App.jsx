@@ -1,9 +1,14 @@
-import AppRouter from './router/AppRouter.jsx';
+import AppRouter from './router/AppRouter.jsx'
+import Header from './components/Header/Header.jsx'
 
 const App = () => {
   return (
-    <AppRouter />
-  );
-};
+    <div>
+      <Header />
 
-export default App;
+      <AppRouter />
+    </div>
+  )
+}
+
+export default App

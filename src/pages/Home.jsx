@@ -1,9 +1,11 @@
+import { MenuList } from '../components/MenuList.jsx'
+
 const Home = () => {
   return (
-    <div>
-      Home page
-    </div>
-  );
-};
+    <section>
+      <MenuList />
+    </section>
+  )
+}
 
-export default Home;
+export default Home

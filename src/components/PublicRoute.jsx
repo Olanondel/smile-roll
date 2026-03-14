@@ -1,7 +1,7 @@
-import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom'
 
 export function PublicRoute({ isAuth, children }) {
-  if (isAuth) return <Navigate to="/" replace />;
+  if (isAuth) return <Navigate to="/" replace />
 
-  return children;
+  return children
 }
