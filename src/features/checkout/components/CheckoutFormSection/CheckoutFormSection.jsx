@@ -36,11 +36,11 @@ const addresses = [
   },
 ]
 
-const CheckoutFormSection = ({ form }) => {
+const CheckoutFormSection = ({ form, addressRef }) => {
   return (
     <div className={styles.root}>
       <PersonalInfoSection form={form} />
-      <DeliverySection addresses={addresses} form={form} />
+      <DeliverySection addressRef={addressRef} addresses={addresses} form={form} />
       <DeliveryTimeSection form={form} />
       <PaymentSection form={form} />
       <CommentSection form={form} />

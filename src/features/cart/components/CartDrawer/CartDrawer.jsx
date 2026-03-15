@@ -31,7 +31,7 @@ export const CartDrawer = ({ open, onClose }) => {
             <CartList />
           </div>
 
-          <CartFooter />
+          <CartFooter onCheckout={onClose} />
         </Drawer.Content>
       </Drawer.Portal>
     </Drawer.Root>

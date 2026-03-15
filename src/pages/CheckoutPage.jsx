@@ -8,31 +8,51 @@ import { useCheckoutSubmit } from '../features/checkout/hooks/useCheckoutSubmit.
 import { Link, useNavigate } from 'react-router-dom'
 import { ROUTES } from '../routes/routes.js'
 import { useCart } from '../hooks/useCart.js'
+import { MIN_ORDER_PRICE } from '../constants/status.js'
+import { useRef } from 'react'
 
 const CheckoutPage = () => {
   const checkout = useCheckoutForm()
   const { submitOrder } = useCheckoutSubmit()
   const navigate = useNavigate()
-  const { clear, items } = useCart()
+  const { clear, items, isMinOrderReached } = useCart()
+  const addressRef = useRef(null)
+  const refs = {
+    addressId: addressRef,
+  }
+  const onSubmit = checkout.form.handleSubmit(
+    async (values) => {
+      if (!checkout.canSubmit) return
 
-  const onSubmit = checkout.form.handleSubmit(async (values) => {
-    if (!checkout.canSubmit) return
+      try {
+        await submitOrder(values)
+        clear()
+        navigate(`${ROUTES.CHECKOUT_SUCCESS}?orderId=83721`, { replace: true })
+      } catch (error) {
+        console.error('Order submit failed', error)
+      }
+    },
+    (errors) => {
+      const firstErrorKey = Object.keys(errors)[0]
 
-    try {
-      await submitOrder(values)
-      clear()
-      navigate(`${ROUTES.CHECKOUT_SUCCESS}?orderId=83721`, { replace: true })
-    } catch (error) {
-      console.error('Order submit failed', error)
-    }
-  })
+      const sectionRef = refs?.[firstErrorKey]
 
-  if (!items.length) {
+      if (sectionRef?.current) {
+        sectionRef.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        })
+        sectionRef.current.focus?.()
+      }
+    },
+  )
+
+  if (!items.length || !isMinOrderReached) {
     return (
       <Container>
         <div style={{ padding: '30px', textAlign: 'center' }}>
           <h4 style={{ marginBottom: 15 }}>
-            Корзина пуста,
+            Корзина пуста или сума заказа меньше {MIN_ORDER_PRICE}
             <br /> пожалуйста вернитесь и выберите
             <br /> ваше блюдо!
           </h4>
@@ -48,7 +68,7 @@ const CheckoutPage = () => {
       <Container>
         <form onSubmit={onSubmit}>
           <CheckoutLayout sidebar={<CheckoutSidebar />}>
-            <CheckoutFormSection form={checkout.form} />
+            <CheckoutFormSection addressRef={addressRef} form={checkout.form} />
           </CheckoutLayout>
         </form>
       </Container>

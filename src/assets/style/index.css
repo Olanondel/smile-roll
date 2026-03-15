@@ -40,6 +40,12 @@ a {
     transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
+.button:disabled {
+    background-color: #ccc;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
 .button:hover {
     background-color: #0fa63f;
 }

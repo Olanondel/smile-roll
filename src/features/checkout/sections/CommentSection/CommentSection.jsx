@@ -12,7 +12,7 @@ export const CommentSection = ({ form }) => {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
             gap: 16,
           }}
         >

@@ -18,6 +18,7 @@ import { CartButton } from '../../../../components/buttons/CartButton/CartButton
 import { CartList } from '../CartList/CartList.jsx'
 import MinOrderWarning from '../../../../components/shared/MinOrderWarning.jsx'
 import CartFooter from '../CartFooter/CartFooter.jsx'
+import { useCart } from '../../../../hooks/useCart.js'
 
 export const CartPopoverTrigger = () => {
   const [isOpen, setIsOpen] = useState(false)

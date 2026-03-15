@@ -6,18 +6,19 @@ export const MenuList = () => {
   const { add } = useCart()
 
   return (
-    <div>
+    <div style={{ display: 'grid', gap: 124 }}>
       {menuCategories.map((category) => (
         <section key={category.id}>
-          <h2>{category.title}</h2>
+          <h2 style={{ fontWeight: 700, fontSize: 48, lineHeight: '64px', marginBottom: 32 }}>
+            {category.title}
+          </h2>
 
           <div
             className="productsGrid"
             style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '3rem',
-              marginBottom: '3rem',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gap: '1.5rem',
             }}
           >
             {category.products.map((product) => (

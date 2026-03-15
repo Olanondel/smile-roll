@@ -3,8 +3,9 @@ import { MIN_ORDER_PRICE } from '../../../../constants/status.js'
 import { DeliveryTypeTabs } from '../../components/DeliveryTypeTabs.jsx'
 import { PickupInfo } from '../../components/PickupInfo.jsx'
 import { AddressList } from '../../components/AddressList/AddressList.jsx'
+import { FieldError } from '../../../../components/ui/FieldError/FieldError.jsx'
 
-export const DeliverySection = ({ form, addresses, onAddAddress, onDeleteAddress }) => {
+export const DeliverySection = ({ form, addresses, onAddAddress, onDeleteAddress, addressRef }) => {
   const { register, watch, setValue } = form
 
   const deliveryType = watch('deliveryType')
@@ -33,19 +34,19 @@ export const DeliverySection = ({ form, addresses, onAddAddress, onDeleteAddress
 
   return (
     <Section title="Доставка" description="Зона бесплатной доставки уточняется у оператора">
-      <div style={{ display: 'grid', gap: 20 }}>
+      <div ref={addressRef} style={{ display: 'grid', gap: 20 }}>
         <DeliveryTypeTabs value={deliveryType} onChange={handleDeliveryTypeChange} />
 
         {deliveryType === 'delivery' ? (
           <>
-            <div style={{ fontSize: 14 }}>Минимальная сумма заказа {MIN_ORDER_PRICE} грн</div>
-
             <AddressList
               addresses={addresses}
               selectedAddressId={selectedAddressId}
               onSelect={handleSelectAddress}
               onDeleteAddress={onDeleteAddress}
             />
+
+            <FieldError name="addressId" />
 
             <div
               style={{

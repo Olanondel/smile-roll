@@ -20,14 +20,7 @@ const CheckoutSuccessSection = ({
   ]
 
   return (
-    <div
-      style={{
-        background: '#fff',
-        display: 'flex',
-        justifyContent: 'space-between',
-        padding: '48px 64px',
-      }}
-    >
+    <div className={styles.wrapper}>
       <div style={{ fontSize: 34, maxWidth: 336, fontWeight: 700 }}>
         Спасибо,
         <br /> ваш заказ

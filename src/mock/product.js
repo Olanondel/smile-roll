@@ -13,7 +13,7 @@ export const menuCategories = [
       },
       {
         id: 2,
-        image: '/images/product.png',
+        image: '/images/product-1.png',
         title: 'Гункан с лососем',
         weight: '40 г',
         description: 'Нори, рис, лосось, японский майонез, кунжутное масло',
@@ -21,7 +21,7 @@ export const menuCategories = [
       },
       {
         id: 3,
-        image: '/images/product.png',
+        image: '/images/product-2.png',
         title: 'Гункан с креветкой',
         weight: '40 г',
         description: 'Нори, рис, креветка, японский майонез, соус спайси',
@@ -43,7 +43,7 @@ export const menuCategories = [
     products: [
       {
         id: 5,
-        image: '/images/product.png',
+        image: '/images/product-2.png',
         title: 'Филадельфия',
         weight: '250 г',
         description: 'Рис, нори, лосось, сливочный сыр, огурец',
@@ -59,7 +59,7 @@ export const menuCategories = [
       },
       {
         id: 7,
-        image: '/images/product.png',
+        image: '/images/product-1.png',
         title: 'Спайси тунец',
         weight: '240 г',
         description: 'Рис, нори, тунец, соус спайси, огурец',
@@ -81,7 +81,7 @@ export const menuCategories = [
       },
       {
         id: 9,
-        image: '/images/product.png',
+        image: '/images/product-2.png',
         title: 'Сет Премиум',
         weight: '1100 г',
         description: 'Филадельфия, ролл с тунцом, ролл с угрем, гунканы, соусы',
@@ -95,7 +95,7 @@ export const menuCategories = [
     products: [
       {
         id: 10,
-        image: '/images/product.png',
+        image: '/images/cola.png',
         title: 'Coca-Cola',
         weight: '500 мл',
         description: 'Газированный безалкогольный напиток',
@@ -103,7 +103,7 @@ export const menuCategories = [
       },
       {
         id: 11,
-        image: '/images/product.png',
+        image: '/images/fanta.png',
         title: 'Сок апельсиновый',
         weight: '1 л',
         description: 'Негазированный сок',

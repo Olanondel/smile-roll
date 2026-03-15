@@ -1,10 +1,19 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../../../routes/routes.js'
 import { useCart } from '../../../../hooks/useCart.js'
 import styles from './CartFooter.module.css'
 
 const CartFooter = ({ onCheckout }) => {
-  const { total } = useCart()
+  const { total, isMinOrderReached } = useCart()
+  const navigate = useNavigate()
+
+  const handleCheckoutClick = () => {
+    if (!isMinOrderReached) return
+
+    onCheckout()
+
+    navigate(ROUTES.CHECKOUT)
+  }
 
   return (
     <div
@@ -16,9 +25,14 @@ const CartFooter = ({ onCheckout }) => {
         <div style={{ fontSize: 25 }}>{total} грн</div>
       </div>
 
-      <Link to={ROUTES.CHECKOUT} type="button" className="button" onClick={onCheckout}>
+      <button
+        type="button"
+        disabled={!isMinOrderReached}
+        className="button"
+        onClick={handleCheckoutClick}
+      >
         Оформить заказ
-      </Link>
+      </button>
     </div>
   )
 }

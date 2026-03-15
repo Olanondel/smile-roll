@@ -1,3 +1,18 @@
+.wrapper {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 48px 64px;
+}
+
+@media (max-width: 648px) {
+    .wrapper {
+        flex-direction: column;
+        gap: 70px;
+        padding: 48px 16px;
+    }
+}
+
 .section {
     display: grid;
     gap: 16px;
