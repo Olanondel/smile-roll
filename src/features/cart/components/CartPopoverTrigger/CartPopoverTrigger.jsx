@@ -16,6 +16,8 @@ import {
 import styles from './CartPopoverTrigger.module.css'
 import { CartButton } from '../../../../components/buttons/CartButton/CartButton.jsx'
 import { CartList } from '../CartList/CartList.jsx'
+import MinOrderWarning from '../../../../components/shared/MinOrderWarning.jsx'
+import CartFooter from '../CartFooter/CartFooter.jsx'
 
 export const CartPopoverTrigger = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -36,7 +38,7 @@ export const CartPopoverTrigger = () => {
 
   return (
     <>
-      <CartButton ref={refs.setReference} {...getReferenceProps()} />
+      <CartButton ref={refs.setReference} {...getReferenceProps()} isOpen={isOpen} />
 
       {isOpen && (
         <FloatingPortal>
@@ -62,9 +64,11 @@ export const CartPopoverTrigger = () => {
 
               <div className={styles.body}>
                 <CartList />
+
+                <MinOrderWarning />
               </div>
 
-              <div className={styles.footer}>footer</div>
+              <CartFooter onCheckout={() => setIsOpen(false)} />
             </div>
           </FloatingFocusManager>
         </FloatingPortal>

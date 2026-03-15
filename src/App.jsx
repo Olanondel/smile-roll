@@ -3,8 +3,8 @@ import Header from './components/Header/Header.jsx'
 
 const App = () => {
   return (
-    <div>
-      <Header />
+    <div style={{ paddingTop: 16 }}>
+      <Header styles={{ margin: '0 auto 32px' }} />
 
       <AppRouter />
     </div>

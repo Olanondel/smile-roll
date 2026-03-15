@@ -1,0 +1,19 @@
+.cartButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 25px;
+    border-radius: 12px;
+    border: 1px solid #D2D2D7;
+}
+
+.cartButtonActive {
+    background-color: #FF6633;
+    color: white;
+    border-color: #FF6633;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}

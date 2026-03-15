@@ -4,3 +4,5 @@ export const STATUS = {
   SUCCEEDED: 'succeeded', // операция успешно завершена
   FAILED: 'failed', // операция завершилась с ошибкой
 }
+
+export const MIN_ORDER_PRICE = 400

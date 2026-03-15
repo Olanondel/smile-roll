@@ -3,4 +3,6 @@ export const ROUTES = {
   VERIFY: '/verify',
   HOME: '/',
   PROFILE: '/profile',
+  CHECKOUT: '/checkout',
+  CHECKOUT_SUCCESS: '/checkout/success',
 }

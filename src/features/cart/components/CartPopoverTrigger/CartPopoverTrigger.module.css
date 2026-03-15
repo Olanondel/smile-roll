@@ -46,9 +46,3 @@
     overflow-y: auto;
     flex: 1;
 }
-
-.footer {
-    padding: 16px 20px 20px;
-    border-top: 1px solid #ececec;
-    background: #ffffff;
-}

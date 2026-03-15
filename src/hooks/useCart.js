@@ -18,7 +18,7 @@ export const useCart = () => {
   const remove = (productId) => dispatch(removeFromCart(productId))
   const increase = (productId) => dispatch(increaseQuantity(productId))
   const decrease = (productId) => dispatch(decreaseQuantity(productId))
-  const clear = () => dispatch(clearCart)
+  const clear = () => dispatch(clearCart())
 
   return { items, total, add, remove, increase, decrease, clear }
 }

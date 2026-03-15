@@ -1,4 +1,49 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+#root {
+    background-color: #F5F5F7;
+    min-height: 100dvh;
+    min-height: 100vh;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: Inter, system-ui, sans-serif;
+    color: #222;
+}
+
+a {
+    text-decoration: none;
+}
+
+.button {
+    background-color: #12c24a;
+    color: white;
+
+    border: none;
+    border-radius: 16px;
+
+    padding: 16px 28px;
+
+    font-size: 18px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.button:hover {
+    background-color: #0fa63f;
+}
+
+.button:active {
+    transform: scale(0.97);
 }

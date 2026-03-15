@@ -1,6 +1,7 @@
 import { Drawer } from 'vaul'
 import styles from './CartDrawer.module.css'
 import { CartList } from '../CartList/CartList.jsx'
+import CartFooter from '../CartFooter/CartFooter.jsx'
 
 export const CartDrawer = ({ open, onClose }) => {
   return (
@@ -30,7 +31,7 @@ export const CartDrawer = ({ open, onClose }) => {
             <CartList />
           </div>
 
-          <div className={styles.footer}></div>
+          <CartFooter />
         </Drawer.Content>
       </Drawer.Portal>
     </Drawer.Root>

@@ -12,10 +12,14 @@ import Home from '../pages/Home.jsx'
 import Profile from '../pages/Profile.jsx'
 import { useSelector } from 'react-redux'
 import { PublicRoute } from '../components/PublicRoute.jsx'
+import CheckoutPage from '../pages/CheckoutPage.jsx'
+import { CheckoutSuccessPage } from '../pages/CheckoutSuccessPage.jsx'
 
 const protectedRoutes = [
   { path: ROUTES.HOME, element: <Home /> },
   { path: ROUTES.PROFILE, element: <Profile /> },
+  { path: ROUTES.CHECKOUT, element: <CheckoutPage /> },
+  { path: ROUTES.CHECKOUT_SUCCESS, element: <CheckoutSuccessPage /> },
 ]
 
 export default function AppRouter() {

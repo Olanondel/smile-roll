@@ -10,6 +10,7 @@ export const store = configureStore({
   },
 })
 
+// TODO
 store.subscribe(() => {
   const state = store.getState()
 

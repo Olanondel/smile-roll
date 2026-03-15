@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+// TODO
 const loadCart = () => {
   try {
     const data = localStorage.getItem('cart')

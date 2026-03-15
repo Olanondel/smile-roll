@@ -1,0 +1,123 @@
+/* ===============================
+   1. Box sizing
+================================ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* ===============================
+   2. Remove default margins
+================================ */
+* {
+    margin: 0;
+}
+
+/* ===============================
+   3. Root defaults
+================================ */
+html {
+    height: 100%;
+    scroll-behavior: smooth;
+    text-size-adjust: 100%;
+}
+
+body {
+    min-height: 100vh;
+    line-height: 1.5;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===============================
+   4. Media elements
+================================ */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* ===============================
+   5. Forms inherit font
+================================ */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+/* ===============================
+   6. Buttons reset
+================================ */
+button {
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* ===============================
+   7. Links
+================================ */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===============================
+   8. Lists
+================================ */
+ul,
+ol {
+    list-style: none;
+    padding: 0;
+}
+
+/* ===============================
+   9. Tables
+================================ */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* ===============================
+   10. Headings
+================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    overflow-wrap: break-word;
+}
+
+/* ===============================
+   11. Paragraphs
+================================ */
+p {
+    overflow-wrap: break-word;
+}
+
+/* ===============================
+   12. Textarea
+================================ */
+textarea {
+    resize: vertical;
+}
+
+/* ===============================
+   13. Root stacking context
+================================ */
+#root,
+#__next {
+    isolation: isolate;
+}
