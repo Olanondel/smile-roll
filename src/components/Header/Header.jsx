@@ -6,9 +6,14 @@ import { Container } from '../Container/Container.jsx'
 import Logo from '../../assets/images/icons/logo.png'
 import { Link } from 'react-router-dom'
 import { ROUTES } from '../../routes/routes.js'
+import NotificationButton from '../buttons/NotificationButton/NotificationButton.jsx'
+
+import HeartButton from '../../assets/icons/heart.svg?react'
+import { useFavorites } from '../../features/favorites/hooks/useFavorites.js'
 
 const Header = ({ styles }) => {
   const isMobile = useMediaQuery(768)
+  const { favoritesCount } = useFavorites()
 
   return (
     <header style={styles}>
@@ -26,7 +31,14 @@ const Header = ({ styles }) => {
             <img src={Logo} alt="" style={{ top: 0, right: 0, width: 58 }} />
           </Link>
 
-          <div style={{ marginLeft: 'auto' }}>
+          <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '15px' }}>
+            <NotificationButton
+              as={Link}
+              to={'/profile/favorites'}
+              icon={HeartButton}
+              count={favoritesCount}
+            />
+
             {isMobile ? <CartDrawerTrigger /> : <CartPopoverTrigger />}
           </div>
         </div>
