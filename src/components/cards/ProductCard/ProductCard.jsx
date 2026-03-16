@@ -1,11 +1,14 @@
 import styles from './ProductCard.module.css'
 
+import HeartIcon from '../../../assets/icons/heart.svg?react'
+
 export const ProductCard = ({
   image,
   title,
   weight,
   description,
   price,
+  isFavourite,
   onFavoriteClick,
   onAddClick,
 }) => {
@@ -33,25 +36,13 @@ export const ProductCard = ({
         <div className={styles.actions}>
           <button
             type="button"
-            className={styles.favoriteButton}
+            className={[styles.favoriteButton, isFavourite && styles.favoriteButtonActive].join(
+              ' ',
+            )}
             onClick={onFavoriteClick}
             aria-label="Добавить в избранное"
           >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 20.5L10.55 19.2C5.4 14.55 2 11.5 2 7.75C2 4.7 4.42 2.5 7.5 2.5C9.24 2.5 10.91 3.31 12 4.59C13.09 3.31 14.76 2.5 16.5 2.5C19.58 2.5 22 4.7 22 7.75C22 11.5 18.6 14.55 13.45 19.21L12 20.5Z"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <HeartIcon className={styles.heartIcon} />
           </button>
 
           <button

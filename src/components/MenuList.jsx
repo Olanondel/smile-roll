@@ -1,9 +1,11 @@
 import { menuCategories } from '../mock/product.js'
 import { ProductCard } from './cards/ProductCard/ProductCard.jsx'
 import { useCart } from '../hooks/useCart.js'
+import { useFavorites } from '../features/favorites/hooks/useFavorites.js'
 
 export const MenuList = () => {
   const { add } = useCart()
+  const { toggle, favoriteSet } = useFavorites()
 
   return (
     <div style={{ display: 'grid', gap: 124 }}>
@@ -29,7 +31,8 @@ export const MenuList = () => {
                 weight={product.weight}
                 description={product.description}
                 price={product.price}
-                onFavoriteClick={() => console.log('favorite', product.id)}
+                isFavourite={favoriteSet.has(product.id)}
+                onFavoriteClick={() => toggle(product.id)}
                 onAddClick={() => add(product)}
               />
             ))}
