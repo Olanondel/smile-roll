@@ -1,0 +1,11 @@
+.nav {
+
+}
+
+.navItem {
+    display: block;
+}
+
+.navItem:not(:last-child) {
+    margin-bottom: 12px;
+}

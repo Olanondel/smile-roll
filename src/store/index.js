@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import userReducer from './slices/userSlice'
 import cartReducer from './slices/cartSlice'
 import favoritesReducer from '../features/favorites/store/favoritesSlice.js'
+import { setupLocalStorageSync } from './setupLocalStorageSync.js'
 
 export const store = configureStore({
   reducer: {
@@ -12,11 +13,6 @@ export const store = configureStore({
   },
 })
 
-// TODO
-store.subscribe(() => {
-  const state = store.getState()
-
-  localStorage.setItem('cart', JSON.stringify(state.cart.items))
-})
+setupLocalStorageSync(store)
 
 export default store

@@ -9,28 +9,29 @@ import { ProtectedRoute } from '../components/ProtectedRoute.jsx'
 import PhonePage from '../pages/auth/PhonePage'
 import CodePage from '../pages/auth/CodePage'
 import Home from '../pages/Home.jsx'
-import Profile from '../pages/Profile.jsx'
 import { useSelector } from 'react-redux'
 import { PublicRoute } from '../components/PublicRoute.jsx'
 import CheckoutPage from '../pages/CheckoutPage.jsx'
 import { CheckoutSuccessPage } from '../pages/CheckoutSuccessPage.jsx'
+import AccountLayout from '../pages/account/AccountLayout/AccountLayout.jsx'
+import FavoritesPage from '../pages/account/FavoritesPage/FavoritesPage.jsx'
+import OrderHistoryPage from '../pages/account/OrderHistoryPage/OrderHistoryPage.jsx'
 
 const protectedRoutes = [
   { path: ROUTES.HOME, element: <Home /> },
-  { path: ROUTES.PROFILE, element: <Profile /> },
   { path: ROUTES.CHECKOUT, element: <CheckoutPage /> },
   { path: ROUTES.CHECKOUT_SUCCESS, element: <CheckoutSuccessPage /> },
 ]
 
 export default function AppRouter() {
-  const isAuthenticated = useSelector((state) => state.user.isAuth)
+  const isAuth = useSelector((state) => state.user.isAuth)
 
   return (
     <Routes>
       <Route
         path={ROUTES.LOGIN}
         element={
-          <PublicRoute isAuth={isAuthenticated}>
+          <PublicRoute isAuth={isAuth}>
             <PhonePage />
           </PublicRoute>
         }
@@ -38,7 +39,7 @@ export default function AppRouter() {
       <Route
         path={ROUTES.VERIFY}
         element={
-          <PublicRoute isAuth={isAuthenticated}>
+          <PublicRoute isAuth={isAuth}>
             <CodePage />
           </PublicRoute>
         }
@@ -47,7 +48,7 @@ export default function AppRouter() {
       <Route
         path="/"
         element={
-          <ProtectedRoute isAuth={isAuthenticated}>
+          <ProtectedRoute isAuth={isAuth}>
             <Outlet />
           </ProtectedRoute>
         }
@@ -55,6 +56,11 @@ export default function AppRouter() {
         {protectedRoutes.map((route) => (
           <Route key={route.path} path={removeLeadingSlash(route.path)} element={route.element} />
         ))}
+      </Route>
+
+      <Route path={removeLeadingSlash(ROUTES.ACCOUNT)} element={<AccountLayout />}>
+        <Route index element={<OrderHistoryPage />} />
+        <Route path={ROUTES.ACCOUNT_FAVORITES} element={<FavoritesPage />} />
       </Route>
 
       <Route path="*" element={<h2>Page not found</h2>} />

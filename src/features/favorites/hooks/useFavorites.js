@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { selectFavoritesIds } from '../store/favoritesSelectors.js'
+import { selectFavoriteIds } from '../store/favoritesSelectors.js'
 import { clearFavorites, toggleFavorite } from '../store/favoritesSlice.js'
 
 export const useFavorites = () => {
-  const items = useSelector(selectFavoritesIds)
+  const items = useSelector(selectFavoriteIds)
   const dispatch = useDispatch()
   const favoritesCount = items.length
 

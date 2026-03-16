@@ -34,7 +34,7 @@ const Header = ({ styles }) => {
           <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '15px' }}>
             <NotificationButton
               as={Link}
-              to={'/profile/favorites'}
+              to={ROUTES.ACCOUNT_FAVORITES}
               icon={HeartButton}
               count={favoritesCount}
             />

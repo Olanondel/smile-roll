@@ -112,3 +112,5 @@ export const menuCategories = [
     ],
   },
 ]
+
+export const allProducts = menuCategories.flatMap((c) => c.products)

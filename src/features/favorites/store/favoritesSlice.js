@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { loadFromLocalStorage } from '../../../utils/storage.js'
 
-const initialState = { items: [] }
+const initialState = { items: loadFromLocalStorage('favorites') }
 
 const favoritesSlice = createSlice({
   name: 'favorites',
