@@ -8,7 +8,9 @@ export default function AccountLayout() {
   return (
     <Container>
       <section className={styles.section}>
-        <ProfileSidebar />
+        <div className={styles.sidebar}>
+          <ProfileSidebar />
+        </div>
 
         <div>
           <Outlet />

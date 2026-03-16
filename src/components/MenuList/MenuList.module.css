@@ -1,0 +1,36 @@
+.wrapper {
+    display: grid;
+    gap: 124px;
+}
+
+.sectionTitle {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 64px;
+    margin-bottom: 32px;
+}
+
+.productsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+/* tablet */
+@media (max-width: 1024px) {
+    .productsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* mobile */
+@media (max-width: 640px) {
+    .productsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .sectionTitle {
+        font-size: 32px;
+        line-height: 40px;
+    }
+}
