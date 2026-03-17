@@ -1,0 +1,40 @@
+import styles from './AccountCard.module.css'
+
+export default function AccountCard({
+  name = 'Oleh',
+  email = 'opba@gmail.com',
+  phone = '+380976986848',
+  avatar = '/images/avatar.png',
+  onEdit,
+  ...props
+}) {
+  return (
+    <article className={styles.card} {...props}>
+      <img className={styles.avatar} src={avatar} alt={name} />
+
+      <div className={styles.content}>
+        <h3 className={styles.name}>{name}</h3>
+        <a className={styles.email} href={`mailto:${email}`}>
+          {email}
+        </a>
+        <a className={styles.phone} href={`tel:${phone.replace(/\s+/g, '')}`}>
+          {phone}
+        </a>
+      </div>
+
+      <button
+        type="button"
+        className={styles.editButton}
+        onClick={onEdit}
+        aria-label="Редактировать профиль"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" className={styles.editIcon}>
+          <path
+            d="M4 16.75V20h3.25l9.58-9.57-3.25-3.25L4 16.75Zm14.71-8.04a1.003 1.003 0 0 0 0-1.42l-2-2a1.003 1.003 0 0 0-1.42 0l-1.17 1.17 3.25 3.25 1.34-1Z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+    </article>
+  )
+}

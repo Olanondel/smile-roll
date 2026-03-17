@@ -3,12 +3,15 @@ import { ProfileSidebar } from '../../../features/profile/components/ProfileSide
 
 import styles from './AccountLayout.module.css'
 import { Container } from '../../../components/Container/Container.jsx'
+import AccountCard from '../../../features/profile/components/AccountCard/AccountCard.jsx'
 
 export default function AccountLayout() {
   return (
     <Container>
       <section className={styles.section}>
         <div className={styles.sidebar}>
+          <AccountCard style={{ marginBottom: '2em' }} />
+
           <ProfileSidebar />
         </div>
 
