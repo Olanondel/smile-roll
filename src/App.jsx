@@ -4,13 +4,20 @@ import Loader from './components/Loader/Loader.jsx'
 import { useSelector } from 'react-redux'
 import { selectAuthRequestStatus } from './features/auth/selectors.js'
 import { STATUS } from './constants/status.js'
+import { useState } from 'react'
 
 const App = () => {
+  const [canShow, setCanShow] = useState(false)
+
+  setTimeout(() => {
+    setCanShow(true)
+  }, 2000)
+
   const authRequestStatus = useSelector(selectAuthRequestStatus)
 
   const isAuthChecked = authRequestStatus === STATUS.SUCCEEDED
 
-  if (!isAuthChecked) {
+  if (!isAuthChecked && !canShow) {
     return <Loader />
   }
 
