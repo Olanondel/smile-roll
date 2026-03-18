@@ -1,25 +1,26 @@
 import styles from './AccountCard.module.css'
+import { useSelector } from 'react-redux'
+import { selectUser } from '../../../auth/selectors.js'
 
-export default function AccountCard({
-  name = 'Oleh',
-  email = 'opba@gmail.com',
-  phone = '+380976986848',
-  avatar = '/images/avatar.png',
-  onEdit,
-  ...props
-}) {
+export default function AccountCard({ avatar = '/images/avatar.png', onEdit, ...props }) {
+  const user = useSelector(selectUser)
+
+  const userName = user.displayName || 'unknown'
+
   return (
     <article className={styles.card} {...props}>
-      <img className={styles.avatar} src={avatar} alt={name} />
+      <img className={styles.avatar} src={avatar} alt={userName} />
 
       <div className={styles.content}>
-        <h3 className={styles.name}>{name}</h3>
-        <a className={styles.email} href={`mailto:${email}`}>
-          {email}
+        <h3 className={styles.name}>{userName}</h3>
+        <a className={styles.email} href={`mailto:${user.email}`}>
+          {user.email}
         </a>
-        <a className={styles.phone} href={`tel:${phone.replace(/\s+/g, '')}`}>
-          {phone}
-        </a>
+        {user.phoneNumber && (
+          <a className={styles.phone} href={`tel:${user.phoneNumber.replace(/\s+/g, '')}`}>
+            {user.phoneNumber}
+          </a>
+        )}
       </div>
 
       <button

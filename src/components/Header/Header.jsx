@@ -3,12 +3,14 @@ import { CartDrawerTrigger } from '../../features/cart/components/CartDrawerTrig
 import { CartPopoverTrigger } from '../../features/cart/components/CartPopoverTrigger/CartPopoverTrigger.jsx'
 import { Container } from '../Container/Container.jsx'
 
-import Logo from '../../assets/images/icons/logo.png'
+import Logo from '../../assets/images/icons/logo.png?react'
+import LogoutIcon from '../../assets/icons/logout.svg?react'
+import HeartIcon from '../../assets/icons/heart.svg?react'
+
 import { Link } from 'react-router-dom'
 import { ROUTES } from '../../routes/routes.js'
 import NotificationButton from '../buttons/NotificationButton/NotificationButton.jsx'
 
-import HeartButton from '../../assets/icons/heart.svg?react'
 import { useFavorites } from '../../features/favorites/hooks/useFavorites.js'
 import { handleLogout } from '../../firebase/auth.js'
 
@@ -44,20 +46,13 @@ const Header = ({ styles }) => {
             <NotificationButton
               as={Link}
               to={ROUTES.ACCOUNT_FAVORITES}
-              icon={HeartButton}
+              icon={HeartIcon}
               count={favoritesCount}
             />
 
             {isMobile ? <CartDrawerTrigger /> : <CartPopoverTrigger />}
 
-            <NotificationButton
-              as={Link}
-              to={ROUTES.ACCOUNT_FAVORITES}
-              icon={HeartButton}
-              count={favoritesCount}
-            />
-
-            <NotificationButton icon={HeartButton} onClick={logout} />
+            <NotificationButton icon={LogoutIcon} onClick={logout} />
           </div>
         </div>
       </Container>

@@ -10,7 +10,7 @@ export const CartButton = forwardRef(({ onOpen, isOpen, ...props }, ref) => {
       {...props}
       className={`${styles.cartButton} ${isOpen ? styles.cartButtonActive : ''}`}
     >
-      <span>Корзина</span>
+      <span className={styles.cartText}>Корзина</span>
 
       <CartIcon />
     </button>
