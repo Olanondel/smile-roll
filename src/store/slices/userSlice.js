@@ -1,15 +1,9 @@
-// src/store/slices/userSlice.js
 import { createSlice } from '@reduxjs/toolkit'
 import { STATUS } from '../../constants/status.js'
 
-const userFromStorage = JSON.parse(localStorage.getItem('user')) || {
-  isAuth: false,
-  data: null,
-}
-
 const initialState = {
-  user: userFromStorage.data,
-  isAuth: userFromStorage.isAuth,
+  user: null,
+  isAuth: null,
   status: STATUS.IDLE,
 }
 
@@ -31,7 +25,10 @@ const userSlice = createSlice({
       state.status = STATUS.IDLE
     },
 
-    // можно менять статус загрузки
+    setSucceeded: (state) => {
+      state.status = STATUS.SUCCEEDED
+    },
+
     setLoading: (state) => {
       state.status = STATUS.LOADING
     },
@@ -42,6 +39,6 @@ const userSlice = createSlice({
   },
 })
 
-export const { login, logout, setLoading, setFailed } = userSlice.actions
+export const { login, logout, setLoading, setFailed, setSucceeded } = userSlice.actions
 
 export default userSlice.reducer

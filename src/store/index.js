@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
+import { setupLocalStorageSync } from './setupLocalStorageSync.js'
 
 import userReducer from './slices/userSlice'
 import cartReducer from './slices/cartSlice'
 import favoritesReducer from '../features/favorites/store/favoritesSlice.js'
-import { setupLocalStorageSync } from './setupLocalStorageSync.js'
 
 export const store = configureStore({
   reducer: {

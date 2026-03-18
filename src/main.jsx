@@ -11,6 +11,10 @@ import { Provider } from 'react-redux'
 
 import store from './store/index.js'
 
+import { initAuthListener } from './firebase/authListener.js'
+
+initAuthListener(store)
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
