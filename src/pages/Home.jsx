@@ -1,12 +1,10 @@
-import { MenuList } from '../components/MenuList/MenuList.jsx'
-import { Container } from '../components/Container/Container.jsx'
+import ProductsGrid from '../components/ProductsGrid/ProductsGrid.jsx'
+import { menuCategories } from '../mock/product.js'
 
 const HomePage = () => {
   return (
     <section>
-      <Container>
-        <MenuList />
-      </Container>
+      <ProductsGrid products={menuCategories} />
     </section>
   )
 }

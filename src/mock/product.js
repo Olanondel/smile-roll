@@ -2,6 +2,7 @@ export const menuCategories = [
   {
     id: 'gunkans',
     title: 'Гунканы',
+    category: 'gunkans',
     products: [
       {
         id: 1,
@@ -40,6 +41,7 @@ export const menuCategories = [
   {
     id: 'rolls',
     title: 'Роллы',
+    category: 'rolls',
     products: [
       {
         id: 5,
@@ -70,6 +72,7 @@ export const menuCategories = [
   {
     id: 'sets',
     title: 'Сеты',
+    category: 'sets',
     products: [
       {
         id: 8,
@@ -92,6 +95,7 @@ export const menuCategories = [
   {
     id: 'drinks',
     title: 'Напитки',
+    category: 'drinks',
     products: [
       {
         id: 10,

@@ -1,5 +1,4 @@
 import styles from './FavoritesPage.module.css'
-import { menuCategories, menuCategories as category } from '../../../mock/product.js'
 import { ProductCard } from '../../../components/cards/ProductCard/ProductCard.jsx'
 import { useCart } from '../../../hooks/useCart.js'
 import { useFavorites } from '../../../features/favorites/hooks/useFavorites.js'

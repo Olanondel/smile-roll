@@ -1,6 +1,9 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import './CategoryTabs.css'
+import { NavLink } from 'react-router-dom'
+import { ROUTES } from '../../routes/routes.js'
+import { CATEGORIES, CATEGORIES_SLUGS } from '../../constants/categories.js'
 
 function RollsIcon({ active = false }) {
   return (
@@ -121,34 +124,22 @@ function SauceIcon() {
   )
 }
 
-function UnknownIcon() {
-  return (
-    <svg viewBox="0 0 64 64" className="catIconSvg" aria-hidden="true">
-      <circle cx="32" cy="32" r="20" fill="#F7F7F7" stroke="#CFCFCF" strokeWidth="2.5" />
-      <circle cx="32" cy="32" r="11" fill="none" stroke="#CFCFCF" strokeWidth="2.5" />
-      <circle cx="32" cy="32" r="3.5" fill="#CFCFCF" />
-    </svg>
-  )
+const categoryIcons = {
+  [CATEGORIES_SLUGS.rolls]: RollsIcon,
+  [CATEGORIES_SLUGS.sushi]: SushiIcon,
+  [CATEGORIES_SLUGS.sets]: SetIcon,
+  [CATEGORIES_SLUGS.bowls]: BowlIcon,
+  [CATEGORIES_SLUGS.drinks]: DrinkIcon,
+  [CATEGORIES_SLUGS.sauces]: SauceIcon,
 }
-
-const categories = [
-  { id: 'rolls', label: 'Роллы', icon: RollsIcon },
-  { id: 'sushi', label: 'Суши', icon: SushiIcon },
-  { id: 'sets', label: 'Сеты', icon: SetIcon },
-  { id: 'bowls', label: 'Боулы', icon: BowlIcon },
-  { id: 'drinks', label: 'Напитки', icon: DrinkIcon },
-  { id: 'sauces', label: 'Соусы', icon: SauceIcon },
-  { id: 'other1', label: 'Неизв...', icon: UnknownIcon, disabled: true },
-  { id: 'other2', label: 'Неизв...', icon: UnknownIcon, disabled: true },
-]
 
 function CategoryItem({ item, activeId, onChange }) {
   const active = item.id === activeId
-  const Icon = item.icon
+  const Icon = categoryIcons[item.slug]
 
   return (
-    <button
-      type="button"
+    <NavLink
+      to={`${ROUTES.CATEGORY}/${item.slug}`}
       className={[
         'categoryTab',
         active ? 'is-active' : '',
@@ -160,8 +151,8 @@ function CategoryItem({ item, activeId, onChange }) {
         <Icon active={active} />
       </span>
 
-      <span className="categoryTab__label">{item.label}</span>
-    </button>
+      <span className="categoryTab__label">{item.title}</span>
+    </NavLink>
   )
 }
 
@@ -170,7 +161,7 @@ export default function CategoryTabs({ activeId = 'rolls', onChange = () => {}, 
     <section className="categoryTabsSection" {...props}>
       <div className="categoryTabsContainer desktopOnly">
         <div className="categoryTabsRow">
-          {categories.map((item) => (
+          {CATEGORIES?.map((item) => (
             <CategoryItem key={item.id} item={item} activeId={activeId} onChange={onChange} />
           ))}
         </div>
@@ -183,7 +174,7 @@ export default function CategoryTabs({ activeId = 'rolls', onChange = () => {}, 
           freeMode={true}
           className="categoryTabsSwiper"
         >
-          {categories.map((item) => (
+          {CATEGORIES?.map((item) => (
             <SwiperSlide key={item.id} className="categoryTabsSlide">
               <CategoryItem item={item} activeId={activeId} onChange={onChange} />
             </SwiperSlide>

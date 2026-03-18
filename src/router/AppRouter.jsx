@@ -10,6 +10,9 @@ import OrderHistoryPage from '../pages/account/OrderHistoryPage/OrderHistoryPage
 import FavoritesPage from '../pages/account/FavoritesPage/FavoritesPage.jsx'
 import CatalogPage from '../pages/CatalogPage/CatalogPage.jsx'
 import HomePage from '../pages/Home.jsx'
+import CategoryPage from '../pages/CategoryPage/CategoryPage.jsx'
+import { ROUTES } from '../routes/routes.js'
+import CheckoutPage from '../pages/CheckoutPage.jsx'
 
 const createAppRouter = (isAuth) =>
   createBrowserRouter([
@@ -45,7 +48,9 @@ const createAppRouter = (isAuth) =>
           ),
           children: [
             { index: true, element: <HomePage /> },
-            { path: 'catalog', element: <CatalogPage /> },
+            { path: ROUTES.CHECKOUT, element: <CheckoutPage /> },
+            { path: ROUTES.CATALOG, element: <CatalogPage /> },
+            { path: ROUTES.CATEGORY_SLUG, element: <CategoryPage /> },
             {
               path: 'account',
               element: <AccountLayout />,
