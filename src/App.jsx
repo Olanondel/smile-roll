@@ -17,7 +17,7 @@ const App = () => {
 
   const isAuthChecked = authRequestStatus === STATUS.SUCCEEDED
 
-  if (!isAuthChecked && !canShow) {
+  if (!isAuthChecked || !canShow) {
     return <Loader />
   }
 
