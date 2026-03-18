@@ -1,6 +1,11 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { sendPhoneCode } from '../../firebase/auth.js'
+import {
+  handleLogout,
+  loginWithFacebook,
+  loginWithGoogle,
+  sendPhoneCode,
+} from '../../firebase/auth.js'
 import { setConfirmationResultRef } from '../../features/auth/phoneAuthSession.js'
 import Recaptcha from '../../components/Recaptcha.jsx'
 
@@ -23,6 +28,24 @@ function PhonePage() {
       navigate('/verify', { state: { phone } })
     } finally {
       setLoading(false)
+    }
+  }
+
+  const handleGoogle = async () => {
+    try {
+      const user = await loginWithGoogle()
+      console.log('Google user:', user)
+    } catch (error) {
+      console.error('Google login error:', error)
+    }
+  }
+
+  const handleFacebook = async () => {
+    try {
+      const user = await loginWithFacebook()
+      console.log('Facebook user:', user)
+    } catch (error) {
+      console.error('Facebook login error:', error)
     }
   }
 
@@ -63,8 +86,26 @@ function PhonePage() {
             border: '1px solid #ccc',
             width: '100%',
             boxSizing: 'border-box',
+            marginBottom: 30,
           }}
         />
+
+        <div
+          style={{
+            justifyContent: 'space-between',
+            display: 'flex',
+            gap: '12px',
+            marginBottom: 15,
+          }}
+        >
+          <button type="button" className="button" onClick={handleGoogle}>
+            Google
+          </button>
+
+          <button type="button" className="button" disabled onClick={handleFacebook}>
+            Facebook
+          </button>
+        </div>
 
         <button
           disabled={loading}

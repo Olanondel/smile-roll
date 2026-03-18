@@ -1,7 +1,7 @@
 import { MenuList } from '../components/MenuList/MenuList.jsx'
 import { Container } from '../components/Container/Container.jsx'
 
-const Home = () => {
+const HomePage = () => {
   return (
     <section>
       <Container>
@@ -11,4 +11,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default HomePage

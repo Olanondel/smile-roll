@@ -10,10 +10,19 @@ import NotificationButton from '../buttons/NotificationButton/NotificationButton
 
 import HeartButton from '../../assets/icons/heart.svg?react'
 import { useFavorites } from '../../features/favorites/hooks/useFavorites.js'
+import { handleLogout } from '../../firebase/auth.js'
 
 const Header = ({ styles }) => {
   const isMobile = useMediaQuery(768)
   const { favoritesCount } = useFavorites()
+
+  const logout = async () => {
+    try {
+      await handleLogout()
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <header style={styles}>
@@ -40,6 +49,15 @@ const Header = ({ styles }) => {
             />
 
             {isMobile ? <CartDrawerTrigger /> : <CartPopoverTrigger />}
+
+            <NotificationButton
+              as={Link}
+              to={ROUTES.ACCOUNT_FAVORITES}
+              icon={HeartButton}
+              count={favoritesCount}
+            />
+
+            <NotificationButton icon={HeartButton} onClick={logout} />
           </div>
         </div>
       </Container>

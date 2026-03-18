@@ -1,5 +1,4 @@
 import AppRouter from './router/AppRouter.jsx'
-import Header from './components/Header/Header.jsx'
 import Loader from './components/Loader/Loader.jsx'
 import { useSelector } from 'react-redux'
 import { selectAuthRequestStatus } from './features/auth/selectors.js'
@@ -8,10 +7,11 @@ import { useState } from 'react'
 
 const App = () => {
   const [canShow, setCanShow] = useState(false)
+  const isAuth = useSelector((state) => state.user.isAuth)
 
   setTimeout(() => {
     setCanShow(true)
-  }, 2000)
+  }, 3000)
 
   const authRequestStatus = useSelector(selectAuthRequestStatus)
 
@@ -21,13 +21,7 @@ const App = () => {
     return <Loader />
   }
 
-  return (
-    <div style={{ paddingTop: 16 }}>
-      <Header styles={{ margin: '0 auto 32px' }} />
-
-      <AppRouter />
-    </div>
-  )
+  return <AppRouter isAuth={isAuth} />
 }
 
 export default App
