@@ -1,11 +1,12 @@
 import { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { menuCategories } from '../../mock/product.js'
-import { CATEGORIES } from '../../constants/categories.js'
+import { menuCategories } from '@/mock/product.js'
+import { CATEGORIES } from '@/constants/categories.js'
 
 import { Container } from '../../components/Container/Container.jsx'
 import ProductsGrid from '../../components/ProductsGrid/ProductsGrid.jsx'
+import ProductsFilters from '@/features/filters/components/ProductsFilters/ProductsFilters.jsx'
 
 export default function CategoryPage() {
   const { slug } = useParams()
@@ -24,16 +25,20 @@ export default function CategoryPage() {
     )
   }
 
+  const products = categoryProducts?.products || []
+
   return (
     <Container>
       <section>
-        {!categoryProducts?.products?.length ? (
+        {!products.length ? (
           <p>Товаров пока нет</p>
         ) : (
           <div>
             <h1>{category.title}</h1>
 
-            <ProductsGrid products={categoryProducts?.products} />
+            <ProductsFilters />
+
+            <ProductsGrid products={products} />
           </div>
         )}
       </section>

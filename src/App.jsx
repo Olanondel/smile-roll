@@ -11,7 +11,7 @@ const App = () => {
 
   setTimeout(() => {
     setCanShow(true)
-  }, 3000)
+  }, 1500)
 
   const authRequestStatus = useSelector(selectAuthRequestStatus)
 

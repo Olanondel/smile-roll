@@ -118,3 +118,129 @@ export const menuCategories = [
 ]
 
 export const allProducts = menuCategories.flatMap((c) => c.products)
+
+export const FEATURE_OPTIONS = {
+  spicy: {
+    id: 'spicy',
+    label: 'Острое',
+    icon: 'SpicyIcon',
+  },
+  lactoseFree: {
+    id: 'lactoseFree',
+    label: 'Без лактозы',
+    icon: 'LactoseFreeIcon',
+  },
+  vegetarian: {
+    id: 'vegetarian',
+    label: 'Вегетарианское',
+    icon: 'LeafIcon',
+  },
+}
+
+export const INGREDIENT_OPTIONS = {
+  salmon: {
+    id: 'salmon',
+    label: 'Лосось',
+    category: 'fish',
+  },
+  tuna: {
+    id: 'tuna',
+    label: 'Тунец',
+    category: 'fish',
+  },
+  eel: {
+    id: 'eel',
+    label: 'Угорь',
+    category: 'fish',
+  },
+  shrimp: {
+    id: 'shrimp',
+    label: 'Креветка',
+    category: 'seafood',
+  },
+  chickenFillet: {
+    id: 'chickenFillet',
+    label: 'Куриное филе',
+    category: 'meat',
+  },
+  tofu: {
+    id: 'tofu',
+    label: 'Тофу',
+    category: 'vegan',
+  },
+  creamCheese: {
+    id: 'creamCheese',
+    label: 'Сливочный сыр',
+    category: 'dairy',
+  },
+  avocado: {
+    id: 'avocado',
+    label: 'Авокадо',
+    category: 'vegetable',
+  },
+  cucumber: {
+    id: 'cucumber',
+    label: 'Огурец',
+    category: 'vegetable',
+  },
+  tomato: {
+    id: 'tomato',
+    label: 'Помидор',
+    category: 'vegetable',
+  },
+  shiitake: {
+    id: 'shiitake',
+    label: 'Шиитаке',
+    category: 'vegetable',
+  },
+  rice: {
+    id: 'rice',
+    label: 'Рис',
+    category: 'base',
+  },
+  nori: {
+    id: 'nori',
+    label: 'Нори',
+    category: 'base',
+  },
+  crabMix: {
+    id: 'crabMix',
+    label: 'Крабовый микс',
+    category: 'seafood',
+  },
+  tobiko: {
+    id: 'tobiko',
+    label: 'Тобико',
+    category: 'seafood',
+  },
+  spicySauce: {
+    id: 'spicySauce',
+    label: 'Соус спайси',
+    category: 'sauce',
+  },
+  unagiSauce: {
+    id: 'unagiSauce',
+    label: 'Соус унаги',
+    category: 'sauce',
+  },
+  teriyakiSauce: {
+    id: 'teriyakiSauce',
+    label: 'Соус терияки',
+    category: 'sauce',
+  },
+  japaneseMayonnaise: {
+    id: 'japaneseMayonnaise',
+    label: 'Японский майонез',
+    category: 'sauce',
+  },
+  sesame: {
+    id: 'sesame',
+    label: 'Кунжут',
+    category: 'extra',
+  },
+  sesameOil: {
+    id: 'sesameOil',
+    label: 'Кунжутное масло',
+    category: 'extra',
+  },
+}

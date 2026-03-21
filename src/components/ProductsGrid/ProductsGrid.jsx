@@ -1,7 +1,7 @@
 import styles from './ProductsGrid.module.css'
 import { ProductCard } from '../cards/ProductCard/ProductCard.jsx'
-import { useCart } from '../../hooks/useCart.js'
-import { useFavorites } from '../../features/favorites/hooks/useFavorites.js'
+import { useCart } from '@/hooks/useCart.js'
+import { useFavorites } from '@/features/favorites/hooks/useFavorites.js'
 
 const ProductsGrid = ({ products, ...props }) => {
   const { add } = useCart()

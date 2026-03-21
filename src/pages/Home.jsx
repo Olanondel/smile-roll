@@ -1,10 +1,10 @@
 import ProductsGrid from '../components/ProductsGrid/ProductsGrid.jsx'
-import { menuCategories } from '../mock/product.js'
+import { allProducts } from '@/mock/product.js'
 
 const HomePage = () => {
   return (
     <section>
-      <ProductsGrid products={menuCategories} />
+      <ProductsGrid products={allProducts} />
     </section>
   )
 }

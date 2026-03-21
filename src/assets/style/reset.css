@@ -121,3 +121,7 @@ textarea {
 #__next {
     isolation: isolate;
 }
+
+fieldset {
+    border: none;
+}

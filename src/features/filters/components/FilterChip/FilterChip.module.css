@@ -1,0 +1,55 @@
+.root {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.input {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 0;
+    clip-path: inset(50%);
+    clip: rect(0 0 0 0);
+}
+
+.content {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 999px;
+    background: #fff;
+    color: #111827;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.root:hover .content {
+    border-color: #fb7c45;
+}
+
+.input:focus-visible + .content {
+    outline: 2px solid #111827;
+    outline-offset: 2px;
+}
+
+.active .content {
+    border-color: #fb7c45;
+    background: #fff7f3;
+}
+
+.disabled {
+    cursor: not-allowed;
+}
+
+.disabled .content {
+    opacity: 0.5;
+}
