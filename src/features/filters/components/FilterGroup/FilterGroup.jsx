@@ -1,4 +1,6 @@
 import React, { forwardRef, useId } from 'react'
+import { AnimatePresence } from 'framer-motion'
+import { AnimatedListItem } from '@/components/ui/AnimatedListItem/AnimatedListItem.jsx'
 
 function hasValue(array, value) {
   return Array.isArray(array) && array.includes(value)
@@ -87,40 +89,44 @@ const FilterGroup = forwardRef(function FilterGroup(
           flexDirection: direction === 'column' ? 'column' : 'row',
         }}
       >
-        {options.map((option) => {
-          const checked = isChecked(option.value)
-          const optionDisabled = disabled || Boolean(option.disabled)
-          const inputType = isMultiple ? 'checkbox' : 'radio'
-          const optionId = `${groupName}-${String(option.value)}`
+        <AnimatePresence>
+          {options.map((option) => {
+            const checked = isChecked(option.value)
+            const optionDisabled = disabled || Boolean(option.disabled)
+            const inputType = isMultiple ? 'checkbox' : 'radio'
+            const optionId = `${groupName}-${String(option.value)}`
 
-          const inputProps = {
-            id: optionId,
-            type: inputType,
-            name: groupName,
-            value: String(option.value),
-            checked,
-            disabled: optionDisabled,
-            onChange: () => handleInputChange(option),
-            'aria-describedby': option.description ? `${optionId}-description` : undefined,
-          }
+            const inputProps = {
+              id: optionId,
+              type: inputType,
+              name: groupName,
+              value: String(option.value),
+              checked,
+              disabled: optionDisabled,
+              onChange: () => handleInputChange(option),
+              'aria-describedby': option.description ? `${optionId}-description` : undefined,
+            }
 
-          return (
-            <div key={option.value} className={itemClassName}>
-              {renderItem({
-                option,
-                checked,
-                disabled: optionDisabled,
-                inputProps,
-              })}
+            return (
+              <AnimatedListItem key={option.value}>
+                <div className={itemClassName}>
+                  {renderItem({
+                    option,
+                    checked,
+                    disabled: optionDisabled,
+                    inputProps,
+                  })}
 
-              {option.description ? (
-                <div id={`${optionId}-description`} style={srOnlyStyles}>
-                  {option.description}
+                  {option.description ? (
+                    <div id={`${optionId}-description`} style={srOnlyStyles}>
+                      {option.description}
+                    </div>
+                  ) : null}
                 </div>
-              ) : null}
-            </div>
-          )
-        })}
+              </AnimatedListItem>
+            )
+          })}
+        </AnimatePresence>
       </div>
     </fieldset>
   )
