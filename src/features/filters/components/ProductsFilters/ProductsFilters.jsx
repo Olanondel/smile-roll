@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { FilterChip, FilterGroup } from '@/features/filters/index.js'
-import { getCategoryOptions, getFeatureOptions, getIngredientOptions } from '@/mock/product.js'
+import { CATEGORY_OPTIONS } from '@/shared/config/categories.js'
 
 export default function ProductsFilters({
   category,
@@ -11,6 +11,8 @@ export default function ProductsFilters({
   ingredients,
   setIngredients,
   resetFilters,
+  featureOptions = [],
+  ingredientOptions = [],
 }) {
   const isResetDisabled = category === 'all' && !features.length && !ingredients.length
 
@@ -29,7 +31,7 @@ export default function ProductsFilters({
           <FilterGroup
             type="single"
             name="roll-category"
-            options={getCategoryOptions()}
+            options={Object.values(CATEGORY_OPTIONS)}
             value={category}
             onChange={setCategory}
             renderItem={({ option, checked, disabled, inputProps }) => (
@@ -61,7 +63,7 @@ export default function ProductsFilters({
           <FilterGroup
             type="multiple"
             name="roll-features"
-            options={getFeatureOptions()}
+            options={featureOptions}
             value={features}
             onChange={setFeatures}
             renderItem={({ option, checked, disabled, inputProps }) => (
@@ -75,7 +77,7 @@ export default function ProductsFilters({
           <FilterGroup
             type="multiple"
             name="roll-ingredients"
-            options={getIngredientOptions()}
+            options={ingredientOptions}
             value={ingredients}
             onChange={setIngredients}
             renderItem={({ option, checked, disabled, inputProps }) => (

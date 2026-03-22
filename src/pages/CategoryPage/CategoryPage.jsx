@@ -1,18 +1,15 @@
 import { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 
-import {
-  filterProducts,
-  flattenMenuCategories,
-  getCategoryOptions,
-  menuCategories,
-} from '@/mock/product.js'
 import { CATEGORIES } from '@/constants/categories.js'
 
-import { Container } from '../../components/Container/Container.jsx'
-import ProductsGrid from '../../components/ProductsGrid/ProductsGrid.jsx'
+import { Container } from '@/components/Container/Container.jsx'
+import ProductsGrid from '@/components/ProductsGrid/ProductsGrid.jsx'
 import ProductsFilters from '@/features/filters/components/ProductsFilters/ProductsFilters.jsx'
 import { useProductsFilters } from '@/features/filters/hooks/useProductsFilters.js'
+import { categoryOptions } from '@/features/filters/model/filterOptions.js'
+import { FEATURE_OPTIONS, INGREDIENT_OPTIONS, menuCategories } from '@/shared/config/index.js'
+import { flattenMenuCategories } from '@/shared/lib/products/index.js'
 
 export default function CategoryPage() {
   const { slug } = useParams()
@@ -23,6 +20,8 @@ export default function CategoryPage() {
     return menuCategories.filter((item) => item.category === slug)
   }, [slug])
 
+  const allProducts = useMemo(() => flattenMenuCategories(categoryProducts), [categoryProducts])
+
   const {
     category: category1,
     setCategory,
@@ -30,16 +29,17 @@ export default function CategoryPage() {
     setFeatures,
     ingredients,
     setIngredients,
-    filtersState,
+    featureOptions,
+    ingredientOptions,
+    filteredProducts,
     resetFilters,
-  } = useProductsFilters(getCategoryOptions())
-
-  const allProducts = useMemo(() => flattenMenuCategories(categoryProducts), [categoryProducts])
-
-  const filteredProducts = useMemo(
-    () => filterProducts(allProducts, filtersState),
-    [allProducts, filtersState],
-  )
+    filtersState,
+  } = useProductsFilters({
+    categoryOptions,
+    products: allProducts,
+    featureDictionary: FEATURE_OPTIONS,
+    ingredientDictionary: INGREDIENT_OPTIONS,
+  })
 
   if (!category) {
     return (
@@ -67,6 +67,8 @@ export default function CategoryPage() {
               setIngredients={setIngredients}
               filtersState={filtersState}
               resetFilters={resetFilters}
+              ingredientOptions={ingredientOptions}
+              featureOptions={featureOptions}
             />
 
             {filteredProducts?.length ? (

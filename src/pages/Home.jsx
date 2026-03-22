@@ -1,5 +1,6 @@
+import { allProducts } from '@/shared/config/menu-categories.js'
+
 import ProductsGrid from '../components/ProductsGrid/ProductsGrid.jsx'
-import { allProducts } from '@/mock/product.js'
 
 const HomePage = () => {
   return (

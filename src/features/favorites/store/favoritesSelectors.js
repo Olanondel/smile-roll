@@ -1,5 +1,6 @@
-import { allProducts } from '../../../mock/product.js'
 import { createSelector } from '@reduxjs/toolkit'
+
+import { allProducts } from '@/shared/config/menu-categories.js'
 
 export const selectFavoriteIds = (state) => state.favorites.items
 

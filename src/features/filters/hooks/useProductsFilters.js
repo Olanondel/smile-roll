@@ -1,5 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import {
+  filterProducts,
+  getFeatureOptions,
+  getIngredientOptions,
+} from '@/shared/lib/products/index.js'
 
 function parseArrayParam(value) {
   if (!value) return []
@@ -11,7 +16,12 @@ function stringifyArrayParam(array) {
   return array.join(',')
 }
 
-export function useProductsFilters(categoryOptions) {
+export function useProductsFilters({
+  categoryOptions,
+  products,
+  featureDictionary,
+  ingredientDictionary,
+}) {
   const [searchParams, setSearchParams] = useSearchParams()
 
   // читаем начальные значения из URL
@@ -36,6 +46,20 @@ export function useProductsFilters(categoryOptions) {
     }),
     [category, features, ingredients],
   )
+
+  // options для filters, собранные по реальным товарам
+  const featureOptions = useMemo(() => {
+    return getFeatureOptions(products, featureDictionary)
+  }, [products, featureDictionary])
+
+  const ingredientOptions = useMemo(() => {
+    return getIngredientOptions(products, ingredientDictionary)
+  }, [products, ingredientDictionary])
+
+  // сразу считаем отфильтрованные товары
+  const filteredProducts = useMemo(() => {
+    return filterProducts(products, filtersState)
+  }, [products, filtersState])
 
   // синхронизация state -> URL
   const currentSearch = searchParams.toString()
@@ -69,6 +93,7 @@ export function useProductsFilters(categoryOptions) {
   }
 
   return {
+    // state
     filtersState,
     category,
     setCategory,
@@ -76,7 +101,14 @@ export function useProductsFilters(categoryOptions) {
     setFeatures,
     ingredients,
     setIngredients,
+
+    // derived data
     selectedCategoryOption,
+    featureOptions,
+    ingredientOptions,
+    filteredProducts,
+
+    // actions
     resetFilters,
   }
 }
