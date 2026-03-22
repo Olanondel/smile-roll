@@ -1,6 +1,6 @@
 import styles from './ProductCard.module.css'
 
-import HeartIcon from '../../../assets/icons/heart.svg?react'
+import HeartIcon from '@/assets/icons/heart.svg?react'
 
 export const ProductCard = ({
   image,

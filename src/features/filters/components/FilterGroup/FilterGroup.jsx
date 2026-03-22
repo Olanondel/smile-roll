@@ -16,7 +16,7 @@ function getNextMultipleValue(currentValue, optionValue) {
 
 const FilterGroup = forwardRef(function FilterGroup(
   {
-    type = 'single', // 'single' | 'multiple'
+    type = 'single',
     name,
     legend,
     options,
@@ -50,16 +50,16 @@ const FilterGroup = forwardRef(function FilterGroup(
     return value === optionValue
   }
 
-  const handleInputChange = (optionValue) => {
+  const handleInputChange = (option) => {
     if (disabled) return
 
     if (isMultiple) {
-      onChange?.(getNextMultipleValue(value, optionValue), optionValue)
+      onChange?.(getNextMultipleValue(value, option.value), option)
       return
     }
 
-    if (value !== optionValue) {
-      onChange?.(optionValue, optionValue)
+    if (value !== option.value) {
+      onChange?.(option.value, option)
     }
   }
 
@@ -100,7 +100,7 @@ const FilterGroup = forwardRef(function FilterGroup(
             value: String(option.value),
             checked,
             disabled: optionDisabled,
-            onChange: () => handleInputChange(option.value),
+            onChange: () => handleInputChange(option),
             'aria-describedby': option.description ? `${optionId}-description` : undefined,
           }
 

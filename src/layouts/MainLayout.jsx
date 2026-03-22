@@ -7,7 +7,7 @@ const MainLayout = () => {
   const [activeCategory, setActiveCategory] = useState('rolls')
 
   return (
-    <div style={{ paddingTop: 16 }}>
+    <div style={{ padding: '26px 0 46px' }}>
       <Header styles={{ margin: '0 auto 32px' }} />
 
       <CategoryTabs

@@ -1,70 +1,67 @@
-import React, { useMemo, useState } from 'react'
-import { FilterGroup, FilterChip } from '@/features/filters/index.js'
+import React from 'react'
 
-const categoryOptions = [
-  { value: 'all', label: 'Все' },
-  { value: 'classic', label: 'Классические' },
-  { value: 'maki', label: 'Маки' },
-  { value: 'dragon', label: 'Драконы' },
-  { value: 'baked', label: 'Запеченные' },
-  { value: 'philadelphia', label: 'Феликсы' },
-  { value: 'sweet', label: 'Сладкие' },
-]
+import { FilterChip, FilterGroup } from '@/features/filters/index.js'
+import { getCategoryOptions, getFeatureOptions, getIngredientOptions } from '@/mock/product.js'
 
-const featureOptions = [
-  { value: 'spicy', label: 'Острые', icon: '🌶' },
-  { value: 'vegetarian', label: 'Вегетарианские', icon: '🌱' },
-  { value: 'lactose-free', label: 'Безлактозные', icon: '🥛' },
-]
-
-const ingredientOptions = [
-  { value: 'salmon', label: 'Лосось', icon: '🐟' },
-  { value: 'eel', label: 'Угорь', icon: '🐠' },
-  { value: 'tuna', label: 'Тунец', icon: '🍣' },
-  { value: 'chicken', label: 'Куриное филе', icon: '🍗' },
-]
-
-export default function ProductsFilters() {
-  const [category, setCategory] = useState('all')
-  const [features, setFeatures] = useState([])
-  const [ingredients, setIngredients] = useState([])
-
-  const filtersState = useMemo(
-    () => ({
-      category,
-      features,
-      ingredients,
-    }),
-    [category, features, ingredients],
-  )
-
-  const isDev = import.meta.env.DEV
+export default function ProductsFilters({
+  category,
+  setCategory,
+  features,
+  setFeatures,
+  ingredients,
+  setIngredients,
+  resetFilters,
+}) {
+  const isResetDisabled = category === 'all' && !features.length && !ingredients.length
 
   return (
-    <section aria-labelledby="roll-filters-title">
-      <h2 id="roll-filters-title">Фильтры</h2>
-
+    <section aria-labelledby="roll-filters-title" style={{ paddingTop: 45, marginBottom: 45 }}>
       <div style={{ display: 'grid', gap: 20 }}>
-        <FilterGroup
-          type="single"
-          name="roll-category"
-          legend="Категории"
-          options={categoryOptions}
-          value={category}
-          onChange={setCategory}
-          renderItem={({ option, checked, disabled, inputProps }) => (
-            <FilterChip inputProps={inputProps} checked={checked} disabled={disabled}>
-              {option.label}
-            </FilterChip>
-          )}
-        />
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: 30,
+          }}
+        >
+          <FilterGroup
+            type="single"
+            name="roll-category"
+            options={getCategoryOptions()}
+            value={category}
+            onChange={setCategory}
+            renderItem={({ option, checked, disabled, inputProps }) => (
+              <FilterChip inputProps={inputProps} checked={checked} disabled={disabled}>
+                {option.label}
+              </FilterChip>
+            )}
+          />
 
-        <div style={{ display: 'flex', gap: 20, justifyContent: 'space-between' }}>
+          <button
+            type="button"
+            disabled={isResetDisabled}
+            className="button"
+            onClick={resetFilters}
+          >
+            Сбросить фильтры
+          </button>
+        </div>
+
+        <div
+          style={{
+            display: 'flex',
+            gap: 20,
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+          }}
+        >
           <FilterGroup
             type="multiple"
             name="roll-features"
-            legend="Особенности"
-            options={featureOptions}
+            options={getFeatureOptions()}
             value={features}
             onChange={setFeatures}
             renderItem={({ option, checked, disabled, inputProps }) => (
@@ -78,8 +75,7 @@ export default function ProductsFilters() {
           <FilterGroup
             type="multiple"
             name="roll-ingredients"
-            legend="Ингредиенты"
-            options={ingredientOptions}
+            options={getIngredientOptions()}
             value={ingredients}
             onChange={setIngredients}
             renderItem={({ option, checked, disabled, inputProps }) => (
@@ -91,8 +87,6 @@ export default function ProductsFilters() {
           />
         </div>
       </div>
-
-      {isDev && <pre>{JSON.stringify(filtersState, null, 2)}</pre>}
     </section>
   )
 }
