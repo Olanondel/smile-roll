@@ -1,39 +1,29 @@
-import { Drawer } from 'vaul'
 import styles from './CartDrawer.module.css'
+import { Drawer, DrawerHeader, DrawerBody, DrawerFooter } from '@/components/ui/Drawer'
 import { CartList } from '../CartList/CartList.jsx'
 import CartFooter from '../CartFooter/CartFooter.jsx'
 
 export const CartDrawer = ({ open, onClose }) => {
   return (
-    <Drawer.Root
-      open={open}
-      onOpenChange={(nextOpen) => {
-        if (!nextOpen) onClose()
-      }}
-    >
-      <Drawer.Portal>
-        <Drawer.Overlay className={styles.overlay} />
+    <Drawer open={open} onClose={onClose} title="Корзина">
+      <DrawerHeader title="Корзина">
+        <button
+          type="button"
+          className={styles.closeButton}
+          onClick={onClose}
+          aria-label="Закрыть корзину"
+        >
+          ×
+        </button>
+      </DrawerHeader>
 
-        <Drawer.Content className={styles.content} aria-describedby={undefined}>
-          <Drawer.Title className={styles.srOnly}>Корзина</Drawer.Title>
+      <DrawerBody>
+        <CartList />
+      </DrawerBody>
 
-          <div className={styles.handle} />
-
-          <div className={styles.header}>
-            <h2 className={styles.heading}>Корзина</h2>
-
-            <button type="button" className={styles.closeButton} onClick={onClose}>
-              ×
-            </button>
-          </div>
-
-          <div className={styles.body}>
-            <CartList />
-          </div>
-
-          <CartFooter onCheckout={onClose} />
-        </Drawer.Content>
-      </Drawer.Portal>
-    </Drawer.Root>
+      <DrawerFooter>
+        <CartFooter onCheckout={onClose} />
+      </DrawerFooter>
+    </Drawer>
   )
 }
