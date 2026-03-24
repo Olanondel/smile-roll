@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CartButton } from '../../../../components/buttons/CartButton/CartButton.jsx'
+import { CartButton } from '@/components/buttons/CartButton/CartButton.jsx'
 import { CartDrawer } from '../CartDrawer/CartDrawer.jsx'
 
 export const CartDrawerTrigger = () => {

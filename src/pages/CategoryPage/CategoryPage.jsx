@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { CATEGORIES } from '@/constants/categories.js'
@@ -10,8 +10,13 @@ import { useProductsFilters } from '@/features/filters/hooks/useProductsFilters.
 import { categoryOptions } from '@/features/filters/model/filterOptions.js'
 import { FEATURE_OPTIONS, INGREDIENT_OPTIONS, menuCategories } from '@/shared/config/index.js'
 import { flattenMenuCategories } from '@/shared/lib/products/index.js'
+import { Modal, ModalBody } from '@/shared/ui/Modal/index.js'
+import NotificationButton from '@/components/buttons/NotificationButton/NotificationButton.jsx'
+import FiltersIcon from '@/assets/icons/filters.svg?react'
+import { ResponsiveSheet } from '@/shared/ui/ResponsiveSheet/index.js'
 
 export default function CategoryPage() {
+  const [isFiltersOpen, setFiltersOpen] = useState(false)
   const { slug } = useParams()
 
   const category = CATEGORIES.find((item) => item.slug === slug)
@@ -56,20 +61,32 @@ export default function CategoryPage() {
           <p>Товаров пока нет</p>
         ) : (
           <div>
-            <h1>{category.title}</h1>
+            <div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '30px 0' }}>
+                <h1>{category.title}</h1>
 
-            <ProductsFilters
-              category={category1}
-              setCategory={setCategory}
-              features={features}
-              setFeatures={setFeatures}
-              ingredients={ingredients}
-              setIngredients={setIngredients}
-              filtersState={filtersState}
-              resetFilters={resetFilters}
-              ingredientOptions={ingredientOptions}
-              featureOptions={featureOptions}
-            />
+                <NotificationButton icon={FiltersIcon} onClick={() => setFiltersOpen(true)} />
+              </div>
+
+              <ResponsiveSheet
+                title="Фильтры"
+                open={isFiltersOpen}
+                onClose={() => setFiltersOpen(false)}
+              >
+                <ProductsFilters
+                  category={category1}
+                  setCategory={setCategory}
+                  features={features}
+                  setFeatures={setFeatures}
+                  ingredients={ingredients}
+                  setIngredients={setIngredients}
+                  filtersState={filtersState}
+                  resetFilters={resetFilters}
+                  ingredientOptions={ingredientOptions}
+                  featureOptions={featureOptions}
+                />
+              </ResponsiveSheet>
+            </div>
 
             {filteredProducts?.length ? (
               <ProductsGrid products={filteredProducts} />

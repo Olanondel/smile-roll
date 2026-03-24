@@ -1,4 +1,4 @@
-import { useMediaQuery } from '../../hooks/useMediaQuery.js'
+import { useMediaQuery } from '@/hooks/useMediaQuery.js'
 import { CartDrawerTrigger } from '../../features/cart/components/CartDrawerTrigger/CartDrawerTrigger.jsx'
 import { CartPopoverTrigger } from '../../features/cart/components/CartPopoverTrigger/CartPopoverTrigger.jsx'
 import { Container } from '../Container/Container.jsx'
@@ -8,11 +8,11 @@ import LogoutIcon from '../../assets/icons/logout.svg?react'
 import HeartIcon from '../../assets/icons/heart.svg?react'
 
 import { Link } from 'react-router-dom'
-import { ROUTES } from '../../routes/routes.js'
+import { ROUTES } from '@/routes/routes.js'
 import NotificationButton from '../buttons/NotificationButton/NotificationButton.jsx'
 
-import { useFavorites } from '../../features/favorites/hooks/useFavorites.js'
-import { handleLogout } from '../../firebase/auth.js'
+import { useFavorites } from '@/features/favorites/hooks/useFavorites.js'
+import { handleLogout } from '@/firebase/auth.js'
 
 const Header = ({ styles }) => {
   const isMobile = useMediaQuery(768)
