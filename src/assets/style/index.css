@@ -10,14 +10,10 @@
     min-height: 100vh;
 }
 
-html, body {
-    overflow-x: hidden;
-    overflow-y: scroll;
-}
-
 body {
     font-family: Inter, system-ui, sans-serif;
     color: #222;
+    overflow-x: hidden;
 }
 
 a {

@@ -8,7 +8,7 @@ export const Drawer = ({
   className = '',
   overlayClassName = '',
   contentClassName = '',
-  shouldScaleBackground = false,
+  shouldScaleBackground = true,
   direction = 'bottom',
   showHandle = true,
   title,

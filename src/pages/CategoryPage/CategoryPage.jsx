@@ -10,7 +10,6 @@ import { useProductsFilters } from '@/features/filters/hooks/useProductsFilters.
 import { categoryOptions } from '@/features/filters/model/filterOptions.js'
 import { FEATURE_OPTIONS, INGREDIENT_OPTIONS, menuCategories } from '@/shared/config/index.js'
 import { flattenMenuCategories } from '@/shared/lib/products/index.js'
-import { Modal, ModalBody } from '@/shared/ui/Modal/index.js'
 import NotificationButton from '@/components/buttons/NotificationButton/NotificationButton.jsx'
 import FiltersIcon from '@/assets/icons/filters.svg?react'
 import { ResponsiveSheet } from '@/shared/ui/ResponsiveSheet/index.js'
