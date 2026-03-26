@@ -9,7 +9,7 @@ import { AnimatePresence } from 'framer-motion'
 import { AnimatedListItem } from '@/components/ui/AnimatedListItem/AnimatedListItem.jsx'
 
 const FavoritesPage = () => {
-  const { add } = useCart()
+  const { add, increase, decrease, getQuantity } = useCart()
   const { toggle, favoriteSet } = useFavorites()
 
   const favoriteProducts = useSelector(selectFavoriteProducts)
@@ -32,6 +32,9 @@ const FavoritesPage = () => {
               isFavourite={favoriteSet.has(product.id)}
               onFavoriteClick={() => toggle(product.id)}
               onAddClick={() => add(product)}
+              onIncrement={() => increase(product.id)}
+              onDecrement={() => decrease(product.id)}
+              count={getQuantity(product.id)}
             />
           </AnimatedListItem>
         ))}
