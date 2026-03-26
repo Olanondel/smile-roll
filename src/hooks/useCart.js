@@ -23,5 +23,20 @@ export const useCart = () => {
   const decrease = (productId) => dispatch(decreaseQuantity(productId))
   const clear = () => dispatch(clearCart())
 
-  return { items, total, add, remove, increase, decrease, clear, isMinOrderReached }
+  const getQuantity = (productId) => items.find((item) => item.id === productId)?.quantity || 0
+
+  const isInCart = (productId) => getQuantity(productId) > 0
+
+  return {
+    items,
+    total,
+    add,
+    remove,
+    increase,
+    decrease,
+    clear,
+    isMinOrderReached,
+    getQuantity,
+    isInCart,
+  }
 }

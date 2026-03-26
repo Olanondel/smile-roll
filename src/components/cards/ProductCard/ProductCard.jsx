@@ -11,6 +11,9 @@ export const ProductCard = ({
   isFavourite,
   onFavoriteClick,
   onAddClick,
+  count = 0,
+  onIncrement,
+  onDecrement,
 }) => {
   return (
     <article className={styles.card}>
@@ -33,36 +36,77 @@ export const ProductCard = ({
           {price} <span>грн</span>
         </div>
 
-        <div className={styles.actions}>
-          <button
-            type="button"
-            className={[styles.favoriteButton, isFavourite && styles.favoriteButtonActive].join(
-              ' ',
-            )}
-            onClick={onFavoriteClick}
-            aria-label="Добавить в избранное"
-          >
-            <HeartIcon className={styles.heartIcon} />
-          </button>
-
-          <button
-            type="button"
-            className={styles.addButton}
-            onClick={onAddClick}
-            aria-label="Добавить в корзину"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+        {count ? (
+          <div className={styles.actions}>
+            <button
+              type="button"
+              className={styles.addButton}
+              onClick={onDecrement}
+              aria-label="Убавить количество на 1"
             >
-              <path d="M12 5V19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-              <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-          </button>
-        </div>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            </button>
+
+            {count}
+
+            <button
+              type="button"
+              className={styles.addButton}
+              onClick={onIncrement}
+              aria-label="Увеличить количество на 1"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M12 5V19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            </button>
+          </div>
+        ) : (
+          <div className={styles.actions}>
+            <button
+              type="button"
+              className={[styles.favoriteButton, isFavourite && styles.favoriteButtonActive].join(
+                ' ',
+              )}
+              onClick={onFavoriteClick}
+              aria-label="Добавить в избранное"
+            >
+              <HeartIcon className={styles.heartIcon} />
+            </button>
+
+            <button
+              type="button"
+              className={styles.addButton}
+              onClick={onAddClick}
+              aria-label="Добавить в корзину"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M12 5V19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            </button>
+          </div>
+        )}
       </div>
     </article>
   )

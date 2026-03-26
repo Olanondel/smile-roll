@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { loadFromLocalStorage } from '../../utils/storage.js'
+import { loadFromLocalStorage } from '@/utils/storage.js'
 
 const initialState = { items: loadFromLocalStorage('cart') }
 

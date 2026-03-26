@@ -6,7 +6,7 @@ import { AnimatePresence } from 'framer-motion'
 import { AnimatedListItem } from '@/components/ui/AnimatedListItem/AnimatedListItem.jsx'
 
 const ProductsGrid = ({ products, ...props }) => {
-  const { add } = useCart()
+  const { add, increase, decrease, getQuantity } = useCart()
   const { toggle, favoriteSet } = useFavorites()
 
   return (
@@ -23,6 +23,9 @@ const ProductsGrid = ({ products, ...props }) => {
               isFavourite={favoriteSet.has(product.id)}
               onFavoriteClick={() => toggle(product.id)}
               onAddClick={() => add(product)}
+              onIncrement={() => increase(product.id)}
+              onDecrement={() => decrease(product.id)}
+              count={getQuantity(product.id)}
             />
           </AnimatedListItem>
         ))}
