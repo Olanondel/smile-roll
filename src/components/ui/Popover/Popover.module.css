@@ -26,6 +26,7 @@
 
 .body {
     padding: 16px 18px;
+    overflow: hidden auto ;
 }
 
 .footer {
