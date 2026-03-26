@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './CheckoutFooter.module.css'
-import { useCart } from '../../../../hooks/useCart.js'
+import { useCart } from '@/hooks/useCart.js'
 
 const CheckoutFooter = () => {
   const { total } = useCart()

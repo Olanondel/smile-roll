@@ -10,12 +10,12 @@ import { ROUTES } from '../routes/routes.js'
 import { useCart } from '../hooks/useCart.js'
 import { MIN_ORDER_PRICE } from '../constants/status.js'
 import { useRef } from 'react'
+import { createOrder } from '@/entities/order/api/create-order.js'
 
 const CheckoutPage = () => {
   const checkout = useCheckoutForm()
-  const { submitOrder } = useCheckoutSubmit()
   const navigate = useNavigate()
-  const { clear, items, isMinOrderReached } = useCart()
+  const { clear, items, total, isMinOrderReached } = useCart()
   const addressRef = useRef(null)
   const refs = {
     addressId: addressRef,
@@ -25,9 +25,13 @@ const CheckoutPage = () => {
       if (!checkout.canSubmit) return
 
       try {
-        await submitOrder(values)
+        await createOrder({
+          form: values,
+          items,
+          total,
+        })
         clear()
-        navigate(`${ROUTES.CHECKOUT_SUCCESS}?orderId=83721`, { replace: true })
+        // navigate(`${ROUTES.CHECKOUT_SUCCESS}?orderId=83721`, { replace: true })
       } catch (error) {
         console.error('Order submit failed', error)
       }

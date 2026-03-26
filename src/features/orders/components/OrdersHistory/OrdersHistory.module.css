@@ -1,0 +1,437 @@
+.wrapper {
+    display: grid;
+    gap: 20px;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filterButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 16px;
+    border: none;
+    border-radius: 999px;
+    background: #f1f1f1;
+    color: #1f1f1f;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+            background-color 0.2s ease,
+            color 0.2s ease,
+            transform 0.2s ease;
+}
+
+.filterButton:hover {
+    transform: translateY(-1px);
+}
+
+.filterButtonActive {
+    background: #ff7a3d;
+    color: #ffffff;
+}
+
+.list {
+    display: grid;
+    gap: 18px;
+}
+
+.empty,
+.emptyFiltered {
+    padding: 32px 24px;
+    border-radius: 24px;
+    background: #ffffff;
+    border: 1px solid #ececec;
+    text-align: center;
+}
+
+.emptyTitle {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1f1f1f;
+}
+
+.emptyText {
+    margin-top: 8px;
+    font-size: 15px;
+    color: #7b7b7b;
+}
+
+.card {
+    padding: 24px;
+    border-radius: 24px;
+    background: #ffffff;
+    border: 1px solid #ececec;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+.cardTop {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.cardTopLeft {
+    min-width: 0;
+}
+
+.orderTitleRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.orderTitle {
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.1;
+    font-weight: 700;
+    color: #1f1f1f;
+}
+
+.orderDate {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #7b7b7b;
+}
+
+.totalBox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+.totalLabel {
+    font-size: 13px;
+    color: #8a8a8a;
+}
+
+.totalValue {
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 700;
+    color: #1f1f1f;
+    white-space: nowrap;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 0 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.statusNew {
+    background: #fff3e8;
+    color: #ff7a3d;
+}
+
+.statusConfirmed {
+    background: #e8f2ff;
+    color: #2f80ed;
+}
+
+.statusCooking {
+    background: #f3e8ff;
+    color: #8e44ad;
+}
+
+.statusReady {
+    background: #e9f9ee;
+    color: #27ae60;
+}
+
+.statusCompleted {
+    background: #eef1f4;
+    color: #5f6b7a;
+}
+
+.statusCancelled {
+    background: #ffe9e9;
+    color: #eb5757;
+}
+
+.summaryGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.summaryItem {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: #f9f9f9;
+}
+
+.summaryLabel {
+    font-size: 13px;
+    color: #8a8a8a;
+}
+
+.summaryValue {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f1f1f;
+}
+
+.previewProducts {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.previewProduct {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 16px;
+    background: #fafafa;
+}
+
+.previewImage {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    object-fit: cover;
+    background: #f0f0f0;
+    flex-shrink: 0;
+}
+
+.previewInfo {
+    min-width: 0;
+}
+
+.previewTitle {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1f1f1f;
+}
+
+.previewMeta {
+    margin-top: 4px;
+    font-size: 14px;
+    color: #7b7b7b;
+}
+
+.moreProducts {
+    padding: 0 4px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #7b7b7b;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.primaryButton,
+.secondaryButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+    transition:
+            transform 0.2s ease,
+            opacity 0.2s ease;
+}
+
+.primaryButton:hover,
+.secondaryButton:hover {
+    transform: translateY(-1px);
+}
+
+.primaryButton:active,
+.secondaryButton:active {
+    transform: translateY(0);
+}
+
+.primaryButton {
+    background: #bfe5c6;
+    color: #1f1f1f;
+}
+
+.secondaryButton {
+    background: #ececec;
+    color: #1f1f1f;
+}
+
+.details {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ececec;
+    display: grid;
+    gap: 18px;
+}
+
+.sectionTitle {
+    margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f1f1f;
+}
+
+.productsList {
+    display: grid;
+    gap: 12px;
+}
+
+.productRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 16px;
+    background: #fafafa;
+}
+
+.productMain {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.productImage {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    object-fit: cover;
+    background: #f0f0f0;
+    flex-shrink: 0;
+}
+
+.productInfo {
+    min-width: 0;
+}
+
+.productTitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f1f1f;
+}
+
+.productSub {
+    margin-top: 4px;
+    font-size: 14px;
+    color: #7b7b7b;
+}
+
+.productQty {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f1f1f;
+    white-space: nowrap;
+}
+
+.detailsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.infoBox {
+    padding: 16px;
+    border-radius: 18px;
+    background: #f9f9f9;
+}
+
+.infoTitle {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1f1f1f;
+}
+
+.infoList {
+    display: grid;
+    gap: 8px;
+    font-size: 15px;
+    color: #2b2b2b;
+}
+
+.infoLabel {
+    font-weight: 700;
+    color: #1f1f1f;
+}
+
+@media (max-width: 900px) {
+    .summaryGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .detailsGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .card {
+        padding: 18px;
+        border-radius: 20px;
+    }
+
+    .cardTop {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .totalBox {
+        align-items: flex-start;
+    }
+
+    .summaryGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .actions {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .primaryButton,
+    .secondaryButton {
+        width: 100%;
+    }
+
+    .productRow {
+        align-items: flex-start;
+    }
+
+    .orderTitle {
+        font-size: 20px;
+    }
+
+    .totalValue {
+        font-size: 24px;
+    }
+}
